@@ -37,7 +37,9 @@ fields such as `Problem Owner`, `Plan Closed Date`, `Problem Clearance Confirm`,
 customer values always replace what is currently on the sheet.
 
 ### utils/auth.py
-- `get_creds(scopes)`: Handles OAuth2 authorisation, storing credentials in `token.json` and refreshing them when necessary.
+- `get_creds(scopes)`: Handles OAuth2 authorisation, storing credentials in `token.json` and refreshing them when necessary. The cached
+  token remembers previously granted scopes so the browser consent screen is
+  only shown the first time or when new scopes are added.
 
 ### utils/log.py
 Provides a simple logging utility with functions `info()`, `success()`, `warning()`, and `error()`. The `log` instance from this module is imported wherever logging is needed.
