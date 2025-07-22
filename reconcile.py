@@ -45,10 +45,12 @@ def reconcile_frames(src: pd.DataFrame,
     src_norm = src.map(norm)
     tgt_norm = tgt.map(norm)
 
-    # 2. drop duplicate UID rows (keep first)
-    dupe_uid = src_norm.duplicated(subset=[CS_UID_COL], keep="first")
+    # 2. drop duplicate UID/DU-ID rows (keep first)
+    dupe_uid = src_norm.duplicated(subset=[CS_UID_COL, DU_ID_COL], keep="first")
     if dupe_uid.any():
-        log.warning(f"Skipped {dupe_uid.sum()} duplicate UID row(s).")
+        log.warning(
+            f"Skipped {dupe_uid.sum()} duplicate UID/DU-ID row(s)."
+        )
         src, src_norm = src[~dupe_uid], src_norm[~dupe_uid]
 
     # 3. composite‑key columns
@@ -93,7 +95,7 @@ def reconcile_frames(src: pd.DataFrame,
 
         # UID + DU‑ID match first
         if uid and uid in src_by_uid:
-            srow = src_by_uid[uid].get(du) or next(iter(src_by_uid[uid].values()))
+            srow = src_by_uid[uid].get(du)
 
         # fallback to composite key
         if srow is None:
