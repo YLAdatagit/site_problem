@@ -59,7 +59,9 @@ def get_creds(scopes: Sequence[str]) -> Credentials:
 
     # 1) Load existing token -------------------------------------------------
     if TOKEN_FILE.exists():
-        creds = Credentials.from_authorized_user_file(TOKEN_FILE, scopes=[])
+        # Load previously stored token with its original scopes so that
+        # creds.has_scopes(scopes) can correctly validate them.
+        creds = Credentials.from_authorized_user_file(TOKEN_FILE, scopes=scopes)
 
     # 2) Check validity & required scopes -----------------------------------
     needs_flow = (
