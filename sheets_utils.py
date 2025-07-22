@@ -1,6 +1,6 @@
 from googleapiclient.discovery import build
 from utils.auth import get_creds
-import pandas as pd, os, itertools
+import pandas as pd, os
 
 SCOPES = [
     "https://www.googleapis.com/auth/gmail.modify",
