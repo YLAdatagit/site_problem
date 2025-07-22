@@ -45,7 +45,12 @@ Provides a simple logging utility with functions `info()`, `success()`, `warning
 ## Running the Script
 
 1. Install dependencies from `requirements.txt`.
-2. Set the necessary environment variables (e.g., Gmail query and Sheet IDs).
+2. Set the following environment variables:
+   - `GMAIL_QUERY` – Gmail search string used to find the daily Excel file.
+   - `SOURCE_TAB_NAME` – Name of the worksheet inside the downloaded file.
+   - `SOURCE_HEADER_ROW` – Row number of the header row in that worksheet.
+   - `TARGET_SPREADSHEET_ID` – ID of the Google Sheet to update.
+   - `TARGET_TAB_NAME` – Name of the tab within the target spreadsheet.
 3. Place `credentials.json` from your Google Cloud project in the repository root.
 4. Run `python main.py`.
 
