@@ -105,7 +105,12 @@ def reconcile_frames(src: pd.DataFrame,
             for gs_col, mapping in FIELD_MAP.items():
                 cs_col = mapping["source"]
                 mode   = mapping["mode"]
-                old, new = row[gs_col], srow[cs_col]
+
+                if gs_col not in row or cs_col not in srow:
+                    continue
+
+                old = row.get(gs_col, "")
+                new = srow.get(cs_col, "")
 
                 if mode == "overwrite" and old != new:
                     tgt.at[idx, gs_col] = new; changed = True
