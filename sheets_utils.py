@@ -8,6 +8,13 @@ SCOPES = [
 ]
 
 def read_sheet() -> pd.DataFrame:
+    """Return the contents of the target sheet as a DataFrame.
+
+    Returns
+    -------
+    pandas.DataFrame
+        All rows from ``TARGET_SPREADSHEET_ID``/``TARGET_TAB_NAME``.
+    """
     creds = get_creds(SCOPES)
     sheet = build("sheets", "v4", credentials=creds)
     ss_id  = os.getenv("TARGET_SPREADSHEET_ID")
@@ -19,7 +26,18 @@ def read_sheet() -> pd.DataFrame:
     df = pd.DataFrame(values[1:], columns=values[0])
     return df
 
-def write_sheet(df: pd.DataFrame):
+def write_sheet(df: pd.DataFrame) -> None:
+    """Upload a DataFrame to the target Google Sheet.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+        Data to write back to ``TARGET_SPREADSHEET_ID``/``TARGET_TAB_NAME``.
+
+    Returns
+    -------
+    None
+    """
     creds = get_creds(SCOPES)
     service = build("sheets", "v4", credentials=creds)
     ss_id  = os.getenv("TARGET_SPREADSHEET_ID")
