@@ -1,0 +1,11 @@
+google-api-python-client
+google-auth
+google-auth-httplib2
+google-auth-oauthlib
+google-cloud-storage      # (optional; handy for temp storage)
+pandas
+openpyxl                  # pandas reads xlsx via this
+python-dotenv
+tqdm                      # progress bars (optional)
+numpy
+utils

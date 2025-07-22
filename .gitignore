@@ -1,0 +1,52 @@
+# ─────────────────────────────────────────────────────────────
+#  Python / VS Code project – ignore list
+#  Adjust paths if your venv is named differently.
+# ─────────────────────────────────────────────────────────────
+
+# Byte‑compiled / optimized / dynamically‑linked files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual‑environment folders
+venv/
+site_problem/Scripts/
+
+# VS Code project settings
+.vscode/
+.history/
+
+# OS metadata files
+.DS_Store
+Thumbs.db
+
+# Build / distribution artifacts
+build/
+dist/
+*.egg-info/
+
+# Unit‑test & coverage outputs
+.coverage
+htmlcov/
+
+# Environment & secret files
+.env
+credentials.json
+token.json
+
+# Large or transient data files downloaded at runtime
+*.xlsx
+*.xls
+*.csv
+*.tmp
+*.log
+
+# Optional: Jupyter check‑points
+.ipynb_checkpoints/
+
+# Optional: mypy / pyright caches
+.mypy_cache/
+.pytype/
+
+# Optional: macOS tags
+*.swp
