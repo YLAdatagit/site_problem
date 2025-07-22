@@ -55,3 +55,12 @@ Provides a simple logging utility with functions `info()`, `success()`, `warning
 4. Run `python main.py`.
 
 The script will fetch the latest spreadsheet from Gmail, reconcile it with the Google Sheet, and update the sheet accordingly.
+
+## Standalone Scripts
+
+Two utility scripts are included for manual steps:
+
+1. `gmail_download.py` downloads the latest Excel attachment from Gmail and prints the file path.
+2. `compare_site_problem_excel.py` compares two Excel workbooks locally using the same rules as `reconcile.py`. The updated Google-sheet export is written alongside the original file.
+
+These scripts are helpful for testing the logic before running `main.py`.
