@@ -54,7 +54,11 @@ def reconcile_frames(src: pd.DataFrame,
         src, src_norm = src[~dupe_uid], src_norm[~dupe_uid]
 
     # 3. composite‑key columns
-    key_cols_t = [g for g, m in FIELD_MAP.items() if m["mode"] == "key"]
+    #
+    # Earlier versions expected "mode" to be "key" for columns used in the
+    # fallback lookup.  FIELD_MAP only distinguishes between "overwrite" and
+    # "copy_if_blank" modes, so treat the latter as our key columns.
+    key_cols_t = [g for g, m in FIELD_MAP.items() if m["mode"] == "copy_if_blank"]
     key_cols_s = [FIELD_MAP[g]["source"] for g in key_cols_t]
 
     src["__key"] = src.apply(lambda r: build_key(r, key_cols_s), axis=1)
