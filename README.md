@@ -34,7 +34,9 @@ Defines column mappings and constants used throughout the reconciliation process
 values should overwrite existing cells or only fill blanks. Critical operational
 fields such as `Problem Owner`, `Plan Closed Date`, `Problem Clearance Confirm`,
 `Actual Closed Date` and `HW Remark` are mapped with `mode: "overwrite"` so the
-customer values always replace what is currently on the sheet.
+customer values always replace what is currently on the sheet. Any field marked
+`mode: "copy_if_blank"` is also used to build a fallback composite key when no
+exact UID/DU‑ID match is found.
 
 ### utils/auth.py
 - `get_creds(scopes)`: Handles OAuth2 authorisation, storing credentials in `token.json` and refreshing them when necessary. The cached

@@ -1,6 +1,7 @@
 # Column mapping & helper column names
 FIELD_MAP = {
-    # Map the UID column if it is blank
+    # Map the UID column if it is blank. This field also forms the
+    # fallback composite key used when no UID/DU‑ID match is found.
     "Duplicate in HW DB": {"source": "Unique ID", "mode": "copy_if_blank"},
 
     # Columns that must always mirror the customer spreadsheet
